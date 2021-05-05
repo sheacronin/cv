@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import '../styles/Experience.css';
 
 class Experience extends Component {
     render() {
-        const { sectionName } = this.props;
-
         return (
             <section>
-                <h2>{sectionName}</h2>
+                <h2>Experience</h2>
                 {/* <EditButton /> */}
                 <Job />
                 <Job />
@@ -32,12 +31,12 @@ class Job extends Component {
         const { title, employer, location, startDate, endDate } = this.state;
 
         return (
-            <article>
+            <article className="job">
                 <h3>
-                    {employer}, {location}
+                    {employer}, <span className="location">{location}</span>
                 </h3>
-                <h3>{title}</h3>
-                <div>
+                <h4>{title}</h4>
+                <div className="dates">
                     {startDate}-{endDate}
                 </div>
                 <ul>

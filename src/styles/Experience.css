@@ -1,0 +1,25 @@
+.job {
+    margin: 10px auto;
+    position: relative;
+    line-height: 22px;
+}
+
+.job ul {
+    list-style: inside;
+}
+
+.location {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.job h4 {
+    width: 100%;
+    background-color: #dddddd;
+}
+
+.dates {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
