@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 
 function App() {
     return (
-        <div>
+        <main>
             <Section sectionName="Skills" />
-        </div>
+            <Section sectionName="Experience" />
+        </main>
     );
 }
 
@@ -14,11 +15,11 @@ class Section extends Component {
         const { sectionName } = this.props;
 
         return (
-            <div>
-                <h1>{sectionName}</h1>
+            <section>
+                <h2>{sectionName}</h2>
                 <button>Edit</button>
                 <hr></hr>
-            </div>
+            </section>
         );
     }
 }
