@@ -27,9 +27,11 @@ class Information extends Component {
         return (
             <section>
                 <h1>{name}</h1>
+                <EditButton />
                 <div>
                     <span>{email}</span> | <span>{phoneNumber}</span>
                 </div>
+                <hr />
             </section>
         );
     }
@@ -42,11 +44,15 @@ class Section extends Component {
         return (
             <section>
                 <h2>{sectionName}</h2>
-                <button>Edit</button>
+                <EditButton />
                 <hr />
             </section>
         );
     }
 }
+
+const EditButton = () => {
+    return <button>Edit</button>;
+};
 
 export default App;
