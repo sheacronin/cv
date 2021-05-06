@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/Information.css';
 import EditButton from './EditButton';
 
 class Information extends Component {
@@ -15,7 +16,7 @@ class Information extends Component {
         const { name, email, phoneNumber } = this.state;
 
         return (
-            <section>
+            <section id="information">
                 <h1>{name}</h1>
                 <EditButton />
                 <div>

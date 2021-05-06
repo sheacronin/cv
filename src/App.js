@@ -20,15 +20,11 @@ class Section extends Component {
         return (
             <section>
                 <h2>{sectionName}</h2>
-                <EditButton />
+                {/* <EditButton /> */}
                 <hr />
             </section>
         );
     }
 }
-
-const EditButton = () => {
-    return <button>Edit</button>;
-};
 
 export default App;
