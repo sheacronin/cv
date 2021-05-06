@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditButton from './EditButton';
 
 class Information extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Information extends Component {
         return (
             <section>
                 <h1>{name}</h1>
-                {/* <EditButton /> */}
+                <EditButton />
                 <div>
                     <span>{email}</span> | <span>{phoneNumber}</span>
                 </div>

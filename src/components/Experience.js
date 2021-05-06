@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import '../styles/Experience.css';
+import EditButton from './EditButton';
 
 class Experience extends Component {
     render() {
         return (
             <section>
                 <h2>Experience</h2>
-                {/* <EditButton /> */}
+                <EditButton />
                 <Job />
                 <Job />
                 <hr />
