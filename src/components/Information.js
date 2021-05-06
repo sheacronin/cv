@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
 import '../styles/Information.css';
 import EditButton from './EditButton';
+import Field from './Field';
 
 class Information extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: 'First Last',
-            email: 'firstlast@example.com',
-            phoneNumber: '123-456-7890',
+            isEditable: false,
+            fields: {
+                name: 'First Last',
+                email: 'firstlast@example.com',
+                phoneNumber: '123-456-7890',
+            },
         };
     }
 
     render() {
-        const { name, email, phoneNumber } = this.state;
+        const { name, email, phoneNumber } = this.state.fields;
+        const { isEditable } = this.state;
 
         return (
             <section id="information">
-                <h1>{name}</h1>
+                <Field value={name} isEditable={isEditable} TagName="h1" />
                 <EditButton />
                 <div>
-                    <span>{email}</span> | <span>{phoneNumber}</span>
+                    <Field
+                        value={email}
+                        isEditable={isEditable}
+                        TagName="span"
+                    />
+                    {' | '}
+                    <Field
+                        value={phoneNumber}
+                        isEditable={isEditable}
+                        TagName="span"
+                    />
                 </div>
                 <hr />
             </section>
