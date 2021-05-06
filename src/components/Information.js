@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Information.css';
 import EditButton from './EditButton';
+import SubmitButton from './SubmitButton';
 import Field from './Field';
 
 class Information extends Component {
@@ -16,6 +17,20 @@ class Information extends Component {
         };
     }
 
+    handleEditClick = () => {
+        console.log('Edit click!');
+        this.setState({
+            isEditable: true,
+        });
+    };
+
+    handleSubmitClick = () => {
+        console.log('Submit click!');
+        this.setState({
+            isEditable: false,
+        });
+    };
+
     render() {
         const { name, email, phoneNumber } = this.state.fields;
         const { isEditable } = this.state;
@@ -23,7 +38,11 @@ class Information extends Component {
         return (
             <section id="information">
                 <Field value={name} isEditable={isEditable} TagName="h1" />
-                <EditButton />
+                {isEditable ? (
+                    <SubmitButton onClick={this.handleSubmitClick} />
+                ) : (
+                    <EditButton onClick={this.handleEditClick} />
+                )}
                 <div>
                     <Field
                         value={email}
