@@ -1,0 +1,9 @@
+input {
+    border: none;
+    font: inherit;
+    color: grey;
+}
+
+span {
+    display: inline-block;
+}

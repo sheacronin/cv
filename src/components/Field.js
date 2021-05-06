@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
+import '../styles/Field.css';
 
 class Field extends Component {
     render() {
-        const { isEditable, value, TagName, handleChange, id } = this.props;
+        const {
+            isEditable,
+            value,
+            TagName,
+            handleChange,
+            className,
+        } = this.props;
+
         if (isEditable) {
             return (
                 <input
-                    id={id}
+                    className={className}
                     type="text"
                     value={value}
                     onChange={handleChange}
                 />
             );
         } else {
-            return <TagName>{value}</TagName>;
+            return <TagName className={className}>{value}</TagName>;
         }
     }
 }

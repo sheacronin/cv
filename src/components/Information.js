@@ -17,7 +17,7 @@ class Information extends Component {
 
     handleChange = (e) => {
         this.setState({
-            [e.target.id]: e.target.value,
+            [e.target.className]: e.target.value,
         });
     };
 
@@ -31,7 +31,6 @@ class Information extends Component {
         this.setState({
             isEditable: false,
         });
-        console.log(this.state);
     };
 
     render() {
@@ -40,7 +39,7 @@ class Information extends Component {
         return (
             <section id="information">
                 <Field
-                    id="name"
+                    className="name"
                     value={name}
                     isEditable={isEditable}
                     TagName="h1"
@@ -53,7 +52,7 @@ class Information extends Component {
                 )}
                 <div>
                     <Field
-                        id="email"
+                        className="email"
                         value={email}
                         isEditable={isEditable}
                         TagName="span"
@@ -61,7 +60,7 @@ class Information extends Component {
                     />
                     {' | '}
                     <Field
-                        id="phoneNumber"
+                        className="phoneNumber"
                         value={phoneNumber}
                         isEditable={isEditable}
                         TagName="span"
