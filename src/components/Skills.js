@@ -9,7 +9,10 @@ class Skills extends Component {
         super(props);
         this.state = {
             isEditable: false,
-            skills: [],
+            skills: [
+                { text: 'Microsoft Word', id: 123 },
+                { text: 'JavaScript', id: 345 },
+            ],
         };
     }
 
@@ -32,7 +35,7 @@ class Skills extends Component {
     };
 
     render() {
-        const { isEditable } = this.state;
+        const { isEditable, skills } = this.state;
 
         return (
             <section id="skills">
@@ -43,9 +46,15 @@ class Skills extends Component {
                     <EditButton onClick={this.handleEditClick} />
                 )}
                 <ul>
-                    <li>
-                        <Field TagName="span" isEditable={isEditable} />
-                    </li>
+                    {skills.map((skill) => (
+                        <li key={skill.id}>
+                            <Field
+                                TagName="span"
+                                isEditable={isEditable}
+                                value={skill.text}
+                            />
+                        </li>
+                    ))}
                 </ul>
                 <hr />
             </section>
