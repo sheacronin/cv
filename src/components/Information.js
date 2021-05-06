@@ -9,35 +9,43 @@ class Information extends Component {
         super(props);
         this.state = {
             isEditable: false,
-            fields: {
-                name: 'First Last',
-                email: 'firstlast@example.com',
-                phoneNumber: '123-456-7890',
-            },
+            name: 'First Last',
+            email: 'firstlast@example.com',
+            phoneNumber: '123-456-7890',
         };
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value,
+        });
+    };
+
     handleEditClick = () => {
-        console.log('Edit click!');
         this.setState({
             isEditable: true,
         });
     };
 
     handleSubmitClick = () => {
-        console.log('Submit click!');
         this.setState({
             isEditable: false,
         });
+        console.log(this.state);
     };
 
     render() {
-        const { name, email, phoneNumber } = this.state.fields;
-        const { isEditable } = this.state;
+        const { name, email, phoneNumber, isEditable } = this.state;
 
         return (
             <section id="information">
-                <Field value={name} isEditable={isEditable} TagName="h1" />
+                <Field
+                    id="name"
+                    value={name}
+                    isEditable={isEditable}
+                    TagName="h1"
+                    handleChange={this.handleChange}
+                />
                 {isEditable ? (
                     <SubmitButton onClick={this.handleSubmitClick} />
                 ) : (
@@ -45,15 +53,19 @@ class Information extends Component {
                 )}
                 <div>
                     <Field
+                        id="email"
                         value={email}
                         isEditable={isEditable}
                         TagName="span"
+                        handleChange={this.handleChange}
                     />
                     {' | '}
                     <Field
+                        id="phoneNumber"
                         value={phoneNumber}
                         isEditable={isEditable}
                         TagName="span"
+                        handleChange={this.handleChange}
                     />
                 </div>
                 <hr />
