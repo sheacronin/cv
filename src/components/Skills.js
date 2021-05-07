@@ -22,6 +22,13 @@ class Skills extends Component {
         });
     };
 
+    handleAddFieldClick = () => {
+        const newSkill = { text: 'Skill', id: 45 };
+        this.setState({
+            skills: [...this.state.skills, newSkill],
+        });
+    };
+
     handleEditClick = () => {
         this.setState({
             isEditable: true,
@@ -56,7 +63,11 @@ class Skills extends Component {
                         </li>
                     ))}
                 </ul>
-                {isEditable && <button id="new-skill">+</button>}
+                {isEditable && (
+                    <button id="new-skill" onClick={this.handleAddFieldClick}>
+                        +
+                    </button>
+                )}
                 <hr />
             </section>
         );
