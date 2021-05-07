@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// insert css here
+import '../styles/Skills.css';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
 import Field from './Field';
@@ -56,6 +56,7 @@ class Skills extends Component {
                         </li>
                     ))}
                 </ul>
+                {isEditable && <button id="new-skill">+</button>}
                 <hr />
             </section>
         );

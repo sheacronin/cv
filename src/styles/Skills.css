@@ -1,0 +1,18 @@
+#new-skill {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: none;
+    background-color: #260c3b;
+    color: white;
+    width: 30px;
+    height: 30px;
+    opacity: 70%;
+    font: inherit;
+    transition: opacity 300ms ease-in-out;
+}
+
+#new-skill:hover {
+    opacity: 1;
+    cursor: pointer;
+}
