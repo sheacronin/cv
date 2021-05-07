@@ -4,8 +4,15 @@
     right: 0;
     padding: 8px;
     font-size: 16px;
-    background-color: #260c3b;
+    background-color: #4b226d;
     color: white;
     border: none;
     border-radius: 8px;
+    transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+
+.edit-submit-btn:hover {
+    cursor: pointer;
+    background-color: #260c3b;
+    box-shadow: 0 0 5px #00000050;
 }
