@@ -10,15 +10,26 @@ class Skills extends Component {
         this.state = {
             isEditable: false,
             skills: [
-                { text: 'Microsoft Word', id: 123 },
-                { text: 'JavaScript', id: 345 },
+                { text: 'Microsoft Word', id: '123' },
+                { text: 'JavaScript', id: '345' },
             ],
         };
     }
 
     handleChange = (e) => {
+        const { skills } = this.state;
+
+        // Make a copy of skills array.
+        const newSkills = skills;
+        const changeIndex = skills.findIndex(
+            (skill) => skill.id === e.target.className
+        );
+        const changedSkill = { text: e.target.value, id: e.target.className };
+        // Replace changed skill obj in array copy.
+        newSkills.splice(changeIndex, 1, changedSkill);
+
         this.setState({
-            [e.target.className]: e.target.value,
+            skills: newSkills,
         });
     };
 
@@ -59,6 +70,8 @@ class Skills extends Component {
                                 TagName="span"
                                 isEditable={isEditable}
                                 value={skill.text}
+                                handleChange={this.handleChange}
+                                className={skill.id}
                             />
                         </li>
                     ))}
