@@ -48,6 +48,22 @@ class Skills extends Component {
         });
     };
 
+    handleDeleteClick = (e) => {
+        const { skills } = this.state;
+
+        // Make a copy of skills array.
+        const newSkills = skills;
+        const deleteIndex = skills.findIndex(
+            (skill) => skill.id === e.currentTarget.dataset.field
+        );
+        // Mutate array copy by deleting selected skill.
+        newSkills.splice(deleteIndex, 1);
+
+        this.setState({
+            skills: newSkills,
+        });
+    };
+
     handleSubmitClick = () => {
         this.setState({
             isEditable: false,
@@ -68,7 +84,12 @@ class Skills extends Component {
                 <ul>
                     {skills.map((skill) => (
                         <li key={skill.id}>
-                            {isEditable && <DeleteButton />}
+                            {isEditable && (
+                                <DeleteButton
+                                    onClick={this.handleDeleteClick}
+                                    fieldId={skill.id}
+                                />
+                            )}
                             <Field
                                 TagName="span"
                                 isEditable={isEditable}
