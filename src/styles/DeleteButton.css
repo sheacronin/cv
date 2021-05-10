@@ -1,0 +1,29 @@
+.delete-btn {
+    position: absolute;
+    left: -7px;
+    top: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.delete-btn ~ input {
+    transition: color 300ms ease-in-out;
+}
+
+.delete-btn:hover ~ input {
+    color: #8a3350;
+    background: linear-gradient(90deg, #8a335030, #ffffff);
+    text-decoration: line-through;
+}

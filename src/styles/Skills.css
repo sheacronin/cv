@@ -4,6 +4,10 @@
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+#skills li {
+    position: relative;
+}
+
 #new-skill {
     display: block;
     margin: 0 auto;
