@@ -3,6 +3,7 @@ import '../styles/Skills.css';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
 import Field from './Field';
+import uniqid from 'uniqid';
 
 class Skills extends Component {
     constructor(props) {
@@ -10,8 +11,8 @@ class Skills extends Component {
         this.state = {
             isEditable: false,
             skills: [
-                { text: 'Microsoft Word', id: '123' },
-                { text: 'JavaScript', id: '345' },
+                { text: 'Microsoft Word', id: uniqid() },
+                { text: 'JavaScript', id: uniqid() },
             ],
         };
     }
@@ -34,7 +35,7 @@ class Skills extends Component {
     };
 
     handleAddFieldClick = () => {
-        const newSkill = { text: 'Skill', id: 45 };
+        const newSkill = { text: 'Skill', id: uniqid() };
         this.setState({
             skills: [...this.state.skills, newSkill],
         });
