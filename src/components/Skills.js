@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Skills.css';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
+import DeleteButton from './DeleteButton';
 import Field from './Field';
 import uniqid from 'uniqid';
 
@@ -67,6 +68,7 @@ class Skills extends Component {
                 <ul>
                     {skills.map((skill) => (
                         <li key={skill.id}>
+                            {isEditable && <DeleteButton />}
                             <Field
                                 TagName="span"
                                 isEditable={isEditable}
