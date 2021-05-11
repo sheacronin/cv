@@ -1,49 +1,138 @@
 import React, { Component } from 'react';
 import '../styles/Experience.css';
 import EditButton from './EditButton';
+import SubmitButton from './SubmitButton';
+import DeleteButton from './DeleteButton';
+import Field from './Field';
+import uniqid from 'uniqid';
+import Section from './Section';
 
 class Experience extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isEditable: false,
+            jobs: [
+                {
+                    title: 'Job Title',
+                    employer: 'Employer',
+                    location: 'City, State',
+                    startDate: 'Start Date',
+                    endDate: 'Present',
+                    bullets: [
+                        { text: 'Bullet 1', id: uniqid() },
+                        { text: 'Bullet 2', id: uniqid() },
+                        { text: 'Bullet 3', id: uniqid() },
+                    ],
+                    id: '123',
+                },
+            ],
+        };
+    }
+
+    handleEditClick = () => {
+        this.setState({
+            isEditable: true,
+        });
+    };
+
+    handleSubmitClick = () => {
+        this.setState({
+            isEditable: false,
+        });
+    };
+
     render() {
+        const { jobs, isEditable } = this.state;
+
         return (
             <section>
                 <h2>Experience</h2>
-                <EditButton />
-                <Job />
-                <Job />
+                {isEditable ? (
+                    <SubmitButton onClick={this.handleSubmitClick} />
+                ) : (
+                    <EditButton onClick={this.handleEditClick} />
+                )}
+                {jobs.map((job) => (
+                    <Job
+                        key={job.id}
+                        isEditable={isEditable}
+                        handleChange={this.handleChange}
+                        item={job}
+                    />
+                ))}
+                {isEditable && (
+                    <button id="new-skill" onClick={this.handleAddFieldClick}>
+                        +
+                    </button>
+                )}
                 <hr />
             </section>
         );
     }
 }
 
-class Job extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: 'Job Title',
-            employer: 'Employer',
-            location: 'City, State',
-            startDate: 'Start Date',
-            endDate: 'Present',
-        };
-    }
-
+export class Experience2 extends Component {
     render() {
-        const { title, employer, location, startDate, endDate } = this.state;
+        return (
+            <Section
+                sectionTitle="Experience"
+                items={[
+                    {
+                        title: 'Job Title',
+                        employer: 'Employer',
+                        location: 'City, State',
+                        startDate: 'Start Date',
+                        endDate: 'Present',
+                        bullets: [
+                            { text: 'Bullet 1', id: uniqid() },
+                            { text: 'Bullet 2', id: uniqid() },
+                            { text: 'Bullet 3', id: uniqid() },
+                        ],
+                        id: '123',
+                    },
+                ]}
+                ItemTag={Job}
+            />
+        );
+    }
+}
+
+class Job extends Component {
+    render() {
+        const { item, isEditable } = this.props;
+        console.log(item);
 
         return (
             <article className="job">
+                {isEditable && (
+                    <DeleteButton
+                        onClick={this.handleDeleteClick}
+                        fieldId={item.id}
+                    />
+                )}
                 <h3>
-                    {employer}, <span className="location">{location}</span>
+                    {item.employer},{' '}
+                    <span className="location">{item.location}</span>
                 </h3>
-                <h4>{title}</h4>
+                <Field
+                    isEditable={isEditable}
+                    value={item.title}
+                    TagName="h4"
+                />
                 <div className="dates">
-                    {startDate}-{endDate}
+                    {item.startDate}-{item.endDate}
                 </div>
                 <ul>
-                    <li>Bullet 1</li>
-                    <li>Bullet 2</li>
-                    <li>Bullet 3</li>
+                    {item.bullets.map((bullet) => (
+                        <Field
+                            key={bullet.id}
+                            value={bullet.text}
+                            isEditable={isEditable}
+                            TagName="li"
+                        />
+                    ))}
                 </ul>
             </article>
         );

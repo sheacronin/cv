@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import Information from './components/Information';
-import Experience from './components/Experience';
+import Experience, { Experience2 } from './components/Experience';
 import Skills from './components/Skills';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
             <Information />
             <Skills />
             <Experience />
+            <Experience2 />
         </main>
     );
 }
