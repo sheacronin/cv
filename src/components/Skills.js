@@ -5,6 +5,7 @@ import SubmitButton from './SubmitButton';
 import DeleteButton from './DeleteButton';
 import Field from './Field';
 import uniqid from 'uniqid';
+import Section from './Section';
 
 class Skills extends Component {
     constructor(props) {
@@ -107,6 +108,46 @@ class Skills extends Component {
                 )}
                 <hr />
             </section>
+        );
+    }
+}
+
+export class Skills2 extends Component {
+    render() {
+        return (
+            <Section
+                sectionTitle="Skills"
+                items={[
+                    { text: 'Microsoft Word', id: uniqid() },
+                    { text: 'JavaScript', id: uniqid() },
+                ]}
+                ItemTag={Skill}
+            />
+        );
+    }
+}
+
+class Skill extends Component {
+    render() {
+        const { isEditable, item, handleChange, handleDeleteClick } =
+            this.props;
+
+        return (
+            <li>
+                {isEditable && (
+                    <DeleteButton
+                        onClick={handleDeleteClick}
+                        fieldId={item.id}
+                    />
+                )}
+                <Field
+                    TagName="span"
+                    isEditable={isEditable}
+                    value={item.text}
+                    handleChange={handleChange}
+                    className={item.id}
+                />
+            </li>
         );
     }
 }

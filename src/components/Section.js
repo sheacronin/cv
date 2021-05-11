@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import '../styles/Experience.css';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
-import DeleteButton from './DeleteButton';
-import Field from './Field';
 import uniqid from 'uniqid';
 
 // Making Section for Skills, Experience, Activities
@@ -86,6 +83,8 @@ export class Section extends Component {
                             key={item.id}
                             isEditable={isEditable}
                             item={item}
+                            handleChange={this.handleChange}
+                            handleDeleteClick={this.handleDeleteClick}
                         />
                     ))}
                 </ul>
