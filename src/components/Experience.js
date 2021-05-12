@@ -49,8 +49,23 @@ class Job extends Component {
                     />
                 )}
                 <h3>
-                    {item.employer},{' '}
-                    <span className="location">{item.location}</span>
+                    <Field
+                        isEditable={isEditable}
+                        value={item.employer}
+                        TagName="span"
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'employer'}
+                    />
+                    {', '}
+                    <Field
+                        isEditable={isEditable}
+                        value={item.location}
+                        TagName="span"
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'location'}
+                    />
                 </h3>
                 <Field
                     isEditable={isEditable}
@@ -61,7 +76,23 @@ class Job extends Component {
                     attribute={'title'}
                 />
                 <div className="dates">
-                    {item.startDate}-{item.endDate}
+                    <Field
+                        isEditable={isEditable}
+                        value={item.startDate}
+                        TagName="span"
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'startDate'}
+                    />
+                    -
+                    <Field
+                        isEditable={isEditable}
+                        value={item.endDate}
+                        TagName="span"
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'endDate'}
+                    />
                 </div>
                 <ItemsList
                     isEditable={isEditable}

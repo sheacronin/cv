@@ -3,7 +3,7 @@ import '../styles/Experience.css';
 import DeleteButton from './DeleteButton';
 import Field from './Field';
 import uniqid from 'uniqid';
-import Section, { ItemsList } from './Section';
+import Section from './Section';
 
 function schoolFactory() {
     return {
@@ -42,8 +42,23 @@ class School extends Component {
                     />
                 )}
                 <h3>
-                    {item.institution},{' '}
-                    <span className="location">{item.location}</span>
+                    <Field
+                        isEditable={isEditable}
+                        value={item.institution}
+                        TagName="span"
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'institution'}
+                    />
+                    {', '}
+                    <Field
+                        isEditable={isEditable}
+                        value={item.location}
+                        TagName="span"
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'location'}
+                    />
                 </h3>
                 <Field
                     isEditable={isEditable}
@@ -53,7 +68,16 @@ class School extends Component {
                     itemId={item.id}
                     attribute={'degree'}
                 />
-                <div className="dates">{item.gradDate}</div>
+                <div className="dates">
+                    <Field
+                        isEditable={isEditable}
+                        value={item.gradDate}
+                        TagName="span"
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'gradDate'}
+                    />
+                </div>
             </article>
         );
     }
