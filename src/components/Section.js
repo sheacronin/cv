@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
-import uniqid from 'uniqid';
 
 // Making Section for Skills, Experience, Activities
 export class Section extends Component {
@@ -31,7 +30,7 @@ export class Section extends Component {
     };
 
     handleAddFieldClick = () => {
-        const newItem = { text: 'Skill', id: uniqid() };
+        const newItem = this.props.itemFactory();
         this.setState({
             items: [...this.state.items, newItem],
         });

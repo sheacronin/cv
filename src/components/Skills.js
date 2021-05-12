@@ -122,10 +122,18 @@ export class Skills2 extends Component {
                     { text: 'JavaScript', id: uniqid() },
                 ]}
                 ItemTag={Skill}
+                itemFactory={skillFactory}
             />
         );
     }
 }
+
+const skillFactory = () => {
+    return {
+        text: 'Skill',
+        id: uniqid(),
+    };
+};
 
 class Skill extends Component {
     render() {

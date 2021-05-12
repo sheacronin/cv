@@ -7,6 +7,22 @@ import Field from './Field';
 import uniqid from 'uniqid';
 import Section from './Section';
 
+const jobFactory = () => {
+    return {
+        title: 'Job Title',
+        employer: 'Employer',
+        location: 'City, State',
+        startDate: 'Start Date',
+        endDate: 'Present',
+        bullets: [
+            { text: 'Bullet 1', id: uniqid() },
+            { text: 'Bullet 2', id: uniqid() },
+            { text: 'Bullet 3', id: uniqid() },
+        ],
+        id: uniqid(),
+    };
+};
+
 class Experience extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +43,7 @@ class Experience extends Component {
                     ],
                     id: '123',
                 },
+                jobFactory(),
             ],
         };
     }
@@ -94,6 +111,7 @@ export class Experience2 extends Component {
                     },
                 ]}
                 ItemTag={Job}
+                itemFactory={jobFactory}
             />
         );
     }
@@ -101,14 +119,14 @@ export class Experience2 extends Component {
 
 class Job extends Component {
     render() {
-        const { item, isEditable } = this.props;
-        console.log(item);
+        const { item, isEditable, handleChange, handleDeleteClick } =
+            this.props;
 
         return (
             <article className="job">
                 {isEditable && (
                     <DeleteButton
-                        onClick={this.handleDeleteClick}
+                        onClick={handleDeleteClick}
                         fieldId={item.id}
                     />
                 )}
@@ -120,6 +138,7 @@ class Job extends Component {
                     isEditable={isEditable}
                     value={item.title}
                     TagName="h4"
+                    handleChange={handleChange}
                 />
                 <div className="dates">
                     {item.startDate}-{item.endDate}
