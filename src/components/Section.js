@@ -8,6 +8,50 @@ export class Section extends Component {
         super(props);
         this.state = {
             isEditable: false,
+        };
+    }
+
+    handleEditClick = () => {
+        this.setState({
+            isEditable: true,
+        });
+    };
+
+    handleSubmitClick = () => {
+        this.setState({
+            isEditable: false,
+        });
+    };
+
+    render() {
+        const { isEditable } = this.state;
+        const { sectionTitle, ItemTag, items, itemFactory } = this.props;
+
+        return (
+            <section id={sectionTitle.toLowerCase()}>
+                <h2>{sectionTitle}</h2>
+                {isEditable ? (
+                    <SubmitButton onClick={this.handleSubmitClick} />
+                ) : (
+                    <EditButton onClick={this.handleEditClick} />
+                )}
+                <ItemsList
+                    isEditable={isEditable}
+                    ItemTag={ItemTag}
+                    items={items}
+                    itemFactory={itemFactory}
+                />
+                <hr />
+            </section>
+        );
+    }
+}
+
+class ItemsList extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
             items: props.items,
         };
     }
@@ -36,14 +80,9 @@ export class Section extends Component {
 
     handleAddFieldClick = () => {
         const newItem = this.props.itemFactory();
+        console.log(newItem);
         this.setState({
             items: [...this.state.items, newItem],
-        });
-    };
-
-    handleEditClick = () => {
-        this.setState({
-            isEditable: true,
         });
     };
 
@@ -63,24 +102,12 @@ export class Section extends Component {
         });
     };
 
-    handleSubmitClick = () => {
-        this.setState({
-            isEditable: false,
-        });
-    };
-
     render() {
-        const { isEditable, items } = this.state;
-        const { sectionTitle, ItemTag } = this.props;
+        const { isEditable, ItemTag } = this.props;
+        const { items } = this.state;
 
         return (
-            <section id={sectionTitle.toLowerCase()}>
-                <h2>{sectionTitle}</h2>
-                {isEditable ? (
-                    <SubmitButton onClick={this.handleSubmitClick} />
-                ) : (
-                    <EditButton onClick={this.handleEditClick} />
-                )}
+            <div>
                 <ul>
                     {items.map((item) => (
                         <ItemTag
@@ -97,8 +124,7 @@ export class Section extends Component {
                         +
                     </button>
                 )}
-                <hr />
-            </section>
+            </div>
         );
     }
 }
