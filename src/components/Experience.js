@@ -3,7 +3,7 @@ import '../styles/Experience.css';
 import DeleteButton from './DeleteButton';
 import Field from './Field';
 import uniqid from 'uniqid';
-import Section from './Section';
+import Section, { ItemsList } from './Section';
 import Bullet from './Bullet';
 
 class Experience extends Component {
@@ -63,20 +63,22 @@ class Job extends Component {
                 <div className="dates">
                     {item.startDate}-{item.endDate}
                 </div>
-                <ul>
-                    {item.bullets.map((bullet) => (
-                        <Bullet
-                            key={bullet.id}
-                            isEditable={isEditable}
-                            item={bullet}
-                            handleChange={handleChange}
-                            handleDeleteClick={handleDeleteClick}
-                        />
-                    ))}
-                </ul>
+                <ItemsList
+                    isEditable={isEditable}
+                    ItemTag={Bullet}
+                    items={item.bullets}
+                    itemFactory={bulletFactory}
+                />
             </article>
         );
     }
 }
+
+const bulletFactory = () => {
+    return {
+        text: 'Bullet Point',
+        id: uniqid(),
+    };
+};
 
 export default Experience;

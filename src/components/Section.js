@@ -3,7 +3,7 @@ import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
 
 // Making Section for Skills, Experience, Activities
-export class Section extends Component {
+class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,7 +47,7 @@ export class Section extends Component {
     }
 }
 
-class ItemsList extends Component {
+export class ItemsList extends Component {
     constructor(props) {
         super(props);
 
@@ -80,7 +80,6 @@ class ItemsList extends Component {
 
     handleAddFieldClick = () => {
         const newItem = this.props.itemFactory();
-        console.log(newItem);
         this.setState({
             items: [...this.state.items, newItem],
         });
