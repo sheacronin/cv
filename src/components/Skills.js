@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/Skills.css';
-import DeleteButton from './DeleteButton';
-import Field from './Field';
 import uniqid from 'uniqid';
 import Section from './Section';
+import Bullet from './Bullet';
 
 class Skills extends Component {
     render() {
@@ -11,7 +10,7 @@ class Skills extends Component {
             <Section
                 sectionTitle="Skills"
                 items={[skillFactory(), skillFactory()]}
-                ItemTag={Skill}
+                ItemTag={Bullet}
                 itemFactory={skillFactory}
             />
         );
@@ -24,31 +23,5 @@ const skillFactory = () => {
         id: uniqid(),
     };
 };
-
-class Skill extends Component {
-    render() {
-        const { isEditable, item, handleChange, handleDeleteClick } =
-            this.props;
-
-        return (
-            <li>
-                {isEditable && (
-                    <DeleteButton
-                        onClick={handleDeleteClick}
-                        fieldId={item.id}
-                    />
-                )}
-                <Field
-                    TagName="span"
-                    isEditable={isEditable}
-                    value={item.text}
-                    handleChange={handleChange}
-                    itemId={item.id}
-                    attribute={'text'}
-                />
-            </li>
-        );
-    }
-}
 
 export default Skills;

@@ -4,6 +4,7 @@ import DeleteButton from './DeleteButton';
 import Field from './Field';
 import uniqid from 'uniqid';
 import Section from './Section';
+import Bullet from './Bullet';
 
 class Experience extends Component {
     render() {
@@ -64,11 +65,12 @@ class Job extends Component {
                 </div>
                 <ul>
                     {item.bullets.map((bullet) => (
-                        <Field
+                        <Bullet
                             key={bullet.id}
-                            value={bullet.text}
                             isEditable={isEditable}
-                            TagName="li"
+                            item={bullet}
+                            handleChange={handleChange}
+                            handleDeleteClick={handleDeleteClick}
                         />
                     ))}
                 </ul>
