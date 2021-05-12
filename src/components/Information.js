@@ -39,7 +39,7 @@ class Information extends Component {
         return (
             <section id="information">
                 <Field
-                    className="name"
+                    attribute="name"
                     value={name}
                     isEditable={isEditable}
                     TagName="h1"
@@ -52,7 +52,7 @@ class Information extends Component {
                 )}
                 <div>
                     <Field
-                        className="email"
+                        attribute="email"
                         value={email}
                         isEditable={isEditable}
                         TagName="span"
@@ -60,7 +60,7 @@ class Information extends Component {
                     />
                     {' | '}
                     <Field
-                        className="phoneNumber"
+                        attribute="phoneNumber"
                         value={phoneNumber}
                         isEditable={isEditable}
                         TagName="span"

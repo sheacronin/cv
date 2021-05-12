@@ -3,25 +3,21 @@ import '../styles/Field.css';
 
 class Field extends Component {
     render() {
-        const {
-            isEditable,
-            value,
-            TagName,
-            handleChange,
-            className,
-        } = this.props;
+        const { isEditable, value, TagName, handleChange, attribute, itemId } =
+            this.props;
 
         if (isEditable) {
             return (
                 <input
-                    className={className}
+                    className={attribute}
                     type="text"
                     value={value}
                     onChange={handleChange}
+                    data-item-id={itemId}
                 />
             );
         } else {
-            return <TagName className={className}>{value}</TagName>;
+            return <TagName className={attribute}>{value}</TagName>;
         }
     }
 }

@@ -43,7 +43,8 @@ class Skill extends Component {
                     isEditable={isEditable}
                     value={item.text}
                     handleChange={handleChange}
-                    className={item.id}
+                    itemId={item.id}
+                    attribute={'text'}
                 />
             </li>
         );

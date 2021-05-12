@@ -14,15 +14,20 @@ export class Section extends Component {
 
     handleChange = (e) => {
         const { items } = this.state;
+        const input = e.target;
 
         // Make a copy of items array.
         const newItems = items;
-        const changeIndex = items.findIndex(
-            (item) => item.id === e.target.className
+
+        // Find the item to change with the input's
+        // item id data attribute.
+        const changingItem = newItems.find(
+            (item) => item.id === input.dataset.itemId
         );
-        const changedItem = { text: e.target.value, id: e.target.className };
-        // Replace changed item obj in array copy.
-        newItems.splice(changeIndex, 1, changedItem);
+
+        // Update the item's changing attribute (the input's className)
+        // with the new value.
+        changingItem[input.className] = input.value;
 
         this.setState({
             items: newItems,

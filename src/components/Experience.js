@@ -10,7 +10,7 @@ class Experience extends Component {
         return (
             <Section
                 sectionTitle="Experience"
-                items={[jobFactory(), jobFactory()]}
+                items={[jobFactory()]}
                 ItemTag={Job}
                 itemFactory={jobFactory}
             />
@@ -56,6 +56,8 @@ class Job extends Component {
                     value={item.title}
                     TagName="h4"
                     handleChange={handleChange}
+                    itemId={item.id}
+                    attribute={'title'}
                 />
                 <div className="dates">
                     {item.startDate}-{item.endDate}
