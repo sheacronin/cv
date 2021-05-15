@@ -1,6 +1,7 @@
 .input-wrapper {
     display: inline-block;
     position: relative;
+    min-width: 40px;
 }
 
 input {
@@ -14,4 +15,5 @@ input {
 
 span {
     display: inline-block;
+    min-width: 40px;
 }
