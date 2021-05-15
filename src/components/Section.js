@@ -25,7 +25,8 @@ class Section extends Component {
 
     render() {
         const { isEditable } = this.state;
-        const { sectionTitle, ItemTag, items, itemFactory } = this.props;
+        const { sectionTitle, ItemTag, items, itemFactory, isLastSection } =
+            this.props;
 
         return (
             <section id={sectionTitle.toLowerCase()}>
@@ -41,7 +42,7 @@ class Section extends Component {
                     items={items}
                     itemFactory={itemFactory}
                 />
-                <hr />
+                {!isLastSection && <hr />}
             </section>
         );
     }
