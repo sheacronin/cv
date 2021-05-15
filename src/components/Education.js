@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/Experience.css';
+import '../styles/Education.css';
 import DeleteButton from './DeleteButton';
 import Field from './Field';
 import uniqid from 'uniqid';

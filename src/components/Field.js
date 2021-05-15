@@ -8,13 +8,19 @@ class Field extends Component {
 
         if (isEditable) {
             return (
-                <input
-                    className={attribute}
-                    type="text"
-                    value={value}
-                    onChange={handleChange}
-                    data-item-id={itemId}
-                />
+                <div className="input-wrapper">
+                    {/* Add span w/ value to make input width dynamic */}
+                    <span className={attribute} aria-hidden="true">
+                        {value}
+                    </span>
+                    <input
+                        className={attribute}
+                        type="text"
+                        value={value}
+                        onChange={handleChange}
+                        data-item-id={itemId}
+                    />
+                </div>
             );
         } else {
             return <TagName className={attribute}>{value}</TagName>;

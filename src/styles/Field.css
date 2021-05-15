@@ -1,7 +1,15 @@
+.input-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
 input {
     border: none;
     font: inherit;
     color: grey;
+    position: absolute;
+    width: 100%;
+    left: 0;
 }
 
 span {
