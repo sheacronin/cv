@@ -25,12 +25,18 @@ class Section extends Component {
 
     render() {
         const { isEditable } = this.state;
-        const { sectionTitle, ItemTag, items, itemFactory, isLastSection } =
-            this.props;
+        const {
+            sectionTitle,
+            ItemTag,
+            items,
+            itemFactory,
+            isLastSection,
+            hideTitle,
+        } = this.props;
 
         return (
             <section id={sectionTitle.toLowerCase()}>
-                <h2>{sectionTitle}</h2>
+                {!hideTitle && <h2>{sectionTitle}</h2>}
                 {isEditable ? (
                     <SubmitButton onClick={this.handleSubmitClick} />
                 ) : (

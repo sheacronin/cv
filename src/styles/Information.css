@@ -1,10 +1,19 @@
-#information {
+#information,
+#information input {
     text-align: center;
 }
 
 .name {
+    text-align: center;
+    display: block;
+}
+
+.name .text {
     font-size: 30px;
     letter-spacing: 1px;
     font-weight: bold;
-    text-align: center;
+}
+
+.seperator {
+    min-width: 15px;
 }

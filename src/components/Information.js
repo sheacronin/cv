@@ -1,76 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/Information.css';
-import EditButton from './EditButton';
-import SubmitButton from './SubmitButton';
 import Field from './Field';
+import Section from './Section';
+import uniqid from 'uniqid';
 
-class Information extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isEditable: false,
-            name: 'First Last',
-            email: 'firstlast@example.com',
-            phoneNumber: '123-456-7890',
-        };
-    }
+function Information() {
+    return (
+        <Section
+            sectionTitle="Information"
+            items={[
+                genericItemFactory('First Last', 'name'),
+                genericItemFactory('firstlast@example.com', 'email'),
+                genericItemFactory('123-456-7890', 'phoneNumber'),
+            ]}
+            ItemTag={InfoItem}
+            itemFactory={() => genericItemFactory('Link', 'link')}
+            hideTitle={true}
+        />
+    );
+}
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.className]: e.target.value,
-        });
+function genericItemFactory(text, type) {
+    return {
+        text: text,
+        type: type,
+        id: uniqid(),
     };
+}
 
-    handleEditClick = () => {
-        this.setState({
-            isEditable: true,
-        });
-    };
+function InfoItem(props) {
+    const { isEditable, item, handleChange } = props;
 
-    handleSubmitClick = () => {
-        this.setState({
-            isEditable: false,
-        });
-    };
+    return (
+        <span className={item.type}>
+            {item.type !== 'email' && item.type !== 'name' && <Seperator />}
+            <Field
+                TagName="span"
+                isEditable={isEditable}
+                value={item.text}
+                handleChange={handleChange}
+                itemId={item.id}
+                attribute={'text'}
+            />
+        </span>
+    );
+}
 
-    render() {
-        const { name, email, phoneNumber, isEditable } = this.state;
-
-        return (
-            <section id="information">
-                <Field
-                    attribute="name"
-                    value={name}
-                    isEditable={isEditable}
-                    TagName="h1"
-                    handleChange={this.handleChange}
-                />
-                {isEditable ? (
-                    <SubmitButton onClick={this.handleSubmitClick} />
-                ) : (
-                    <EditButton onClick={this.handleEditClick} />
-                )}
-                <div>
-                    <Field
-                        attribute="email"
-                        value={email}
-                        isEditable={isEditable}
-                        TagName="span"
-                        handleChange={this.handleChange}
-                    />
-                    {' | '}
-                    <Field
-                        attribute="phoneNumber"
-                        value={phoneNumber}
-                        isEditable={isEditable}
-                        TagName="span"
-                        handleChange={this.handleChange}
-                    />
-                </div>
-                <hr />
-            </section>
-        );
-    }
+function Seperator() {
+    return <span className="seperator"> | </span>;
 }
 
 export default Information;
