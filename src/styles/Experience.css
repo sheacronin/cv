@@ -31,3 +31,8 @@ ul {
     display: inline-block;
     margin-left: 30px;
 }
+
+.job > .delete-btn {
+    left: -20px;
+    opacity: 1;
+}

@@ -9,7 +9,7 @@ class Bullet extends Component {
             this.props;
 
         return (
-            <li>
+            <li className="bullet">
                 {isEditable && (
                     <DeleteButton
                         onClick={handleDeleteClick}

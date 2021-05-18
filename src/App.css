@@ -41,3 +41,7 @@ section hr {
     opacity: 1;
     cursor: pointer;
 }
+
+.bullet {
+    position: relative;
+}

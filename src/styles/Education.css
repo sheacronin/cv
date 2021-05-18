@@ -3,3 +3,8 @@
     position: relative;
     line-height: 22px;
 }
+
+.school > .delete-btn {
+    left: -20px;
+    opacity: 1;
+}

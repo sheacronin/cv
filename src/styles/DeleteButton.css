@@ -18,11 +18,11 @@
     cursor: pointer;
 }
 
-.delete-btn ~ input {
+.delete-btn ~ * input {
     transition: color 300ms ease-in-out;
 }
 
-.delete-btn:hover ~ input {
+.delete-btn:hover ~ * input {
     color: #8a3350;
     background: linear-gradient(90deg, #8a335030, #ffffff);
     text-decoration: line-through;
