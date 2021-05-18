@@ -23,3 +23,11 @@ ul {
     top: 0;
     right: 0;
 }
+
+.job .new-item-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 30px;
+}

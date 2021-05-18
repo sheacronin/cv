@@ -17,3 +17,10 @@
 .seperator {
     min-width: 15px;
 }
+
+#information .new-item-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: inline-block;
+}
