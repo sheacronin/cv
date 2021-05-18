@@ -126,7 +126,10 @@ export class ItemsList extends Component {
                     ))}
                 </ul>
                 {isEditable && (
-                    <button id="new-skill" onClick={this.handleAddFieldClick}>
+                    <button
+                        className="new-item-btn"
+                        onClick={this.handleAddFieldClick}
+                    >
                         +
                     </button>
                 )}
