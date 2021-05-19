@@ -52,7 +52,6 @@ class Job extends Component {
                     <Field
                         isEditable={isEditable}
                         value={item.employer}
-                        TagName="span"
                         handleChange={handleChange}
                         itemId={item.id}
                         attribute={'employer'}
@@ -61,25 +60,24 @@ class Job extends Component {
                     <Field
                         isEditable={isEditable}
                         value={item.location}
-                        TagName="span"
                         handleChange={handleChange}
                         itemId={item.id}
                         attribute={'location'}
                     />
                 </h3>
-                <Field
-                    isEditable={isEditable}
-                    value={item.title}
-                    TagName="h4"
-                    handleChange={handleChange}
-                    itemId={item.id}
-                    attribute={'title'}
-                />
+                <h4>
+                    <Field
+                        isEditable={isEditable}
+                        value={item.title}
+                        handleChange={handleChange}
+                        itemId={item.id}
+                        attribute={'title'}
+                    />
+                </h4>
                 <div className="dates">
                     <Field
                         isEditable={isEditable}
                         value={item.startDate}
-                        TagName="span"
                         handleChange={handleChange}
                         itemId={item.id}
                         attribute={'startDate'}
@@ -88,7 +86,6 @@ class Job extends Component {
                     <Field
                         isEditable={isEditable}
                         value={item.endDate}
-                        TagName="span"
                         handleChange={handleChange}
                         itemId={item.id}
                         attribute={'endDate'}

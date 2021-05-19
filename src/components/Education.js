@@ -45,7 +45,6 @@ class School extends Component {
                     <Field
                         isEditable={isEditable}
                         value={item.institution}
-                        TagName="span"
                         handleChange={handleChange}
                         itemId={item.id}
                         attribute={'institution'}
@@ -54,7 +53,6 @@ class School extends Component {
                     <Field
                         isEditable={isEditable}
                         value={item.location}
-                        TagName="span"
                         handleChange={handleChange}
                         itemId={item.id}
                         attribute={'location'}
@@ -63,7 +61,6 @@ class School extends Component {
                 <Field
                     isEditable={isEditable}
                     value={item.degree}
-                    TagName="div"
                     handleChange={handleChange}
                     itemId={item.id}
                     attribute={'degree'}
@@ -72,7 +69,6 @@ class School extends Component {
                     <Field
                         isEditable={isEditable}
                         value={item.gradDate}
-                        TagName="span"
                         handleChange={handleChange}
                         itemId={item.id}
                         attribute={'gradDate'}

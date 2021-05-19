@@ -39,7 +39,6 @@ function InfoItem(props) {
                 <DeleteButton onClick={handleDeleteClick} fieldId={item.id} />
             )}
             <Field
-                TagName="span"
                 isEditable={isEditable}
                 value={item.text}
                 handleChange={handleChange}

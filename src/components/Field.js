@@ -3,7 +3,7 @@ import '../styles/Field.css';
 
 class Field extends Component {
     render() {
-        const { isEditable, value, TagName, handleChange, attribute, itemId } =
+        const { isEditable, value, handleChange, attribute, itemId } =
             this.props;
 
         if (isEditable) {
@@ -23,7 +23,7 @@ class Field extends Component {
                 </div>
             );
         } else {
-            return <TagName className={attribute}>{value}</TagName>;
+            return <span className={attribute}>{value}</span>;
         }
     }
 }
