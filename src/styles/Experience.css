@@ -15,7 +15,11 @@ ul {
 
 .job h4 {
     width: 100%;
-    background-color: #dddddd;
+    background-color: #dedede;
+}
+
+.job .title {
+    background-color: transparent;
 }
 
 .dates {
