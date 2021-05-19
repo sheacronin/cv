@@ -10,7 +10,7 @@ function schoolFactory() {
         institution: 'Institution',
         gradDate: 'May 20XX',
         location: 'City, State',
-        degree: 'B.A. in [ Major ]',
+        degree: 'B.X. in [ Major ]',
         id: uniqid(),
     };
 }

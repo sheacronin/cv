@@ -32,7 +32,7 @@ section hr {
     color: white;
     width: 30px;
     height: 30px;
-    opacity: 70%;
+    opacity: 0.7;
     font: inherit;
     transition: opacity 300ms ease-in-out;
 }
