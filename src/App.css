@@ -45,3 +45,28 @@ section hr {
 .bullet {
     position: relative;
 }
+
+#print-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: white;
+    border: none;
+    color: #4b226d;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out,
+        font-size 100ms ease-in-out;
+    width: 70px;
+    height: 60px;
+}
+
+#print-btn:hover {
+    cursor: pointer;
+    background-color: #efefef;
+    box-shadow: 0 0 5px #ffffff80;
+    font-size: 17px;
+}
+
+.pdf .edit-submit-btn {
+    display: none;
+}
