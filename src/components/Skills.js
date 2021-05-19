@@ -6,10 +6,18 @@ import Bullet from './Bullet';
 
 class Skills extends Component {
     render() {
+        // Push 6 default skill bullets into items array.
+        const defaultSkills = [];
+        let n = 1;
+        while (n <= 6) {
+            defaultSkills.push(skillFactory());
+            n++;
+        }
+
         return (
             <Section
                 sectionTitle="Skills"
-                items={[skillFactory(), skillFactory()]}
+                items={defaultSkills}
                 ItemTag={Bullet}
                 itemFactory={skillFactory}
             />
