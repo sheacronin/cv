@@ -40,3 +40,21 @@ ul {
     left: -20px;
     opacity: 1;
 }
+
+.job .bullet .input-wrapper {
+    width: 95%;
+    vertical-align: text-top;
+}
+
+.job .bullet .text {
+    min-width: 95%;
+    width: 95%;
+    vertical-align: text-top;
+    line-height: 18px;
+}
+
+.job .bullet .input-wrapper .text {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}

@@ -109,7 +109,7 @@ export class ItemsList extends Component {
     };
 
     render() {
-        const { isEditable, ItemTag } = this.props;
+        const { isEditable, ItemTag, isMultiline } = this.props;
         const { items } = this.state;
 
         return (
@@ -122,6 +122,7 @@ export class ItemsList extends Component {
                             item={item}
                             handleChange={this.handleChange}
                             handleDeleteClick={this.handleDeleteClick}
+                            isMultiline={isMultiline}
                         />
                     ))}
                 </ul>

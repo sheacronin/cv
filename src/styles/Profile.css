@@ -1,11 +1,11 @@
-#profile textarea,
-#profile p {
-    width: 85%;
-    height: 70px;
+#profile .input-wrapper {
+    width: 100%;
+    min-width: 100%;
 }
 
-#profile textarea {
-    color: grey;
-    font: inherit;
-    border: none;
+#profile textarea,
+#profile span {
+    min-width: 88%;
+    width: 88%;
+    max-width: 88%;
 }

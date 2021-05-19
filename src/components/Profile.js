@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
 import '../styles/Profile.css';
+import Field from './Field';
 
 class Profile extends Component {
     constructor(props) {
@@ -41,14 +42,12 @@ class Profile extends Component {
                 ) : (
                     <EditButton onClick={this.handleEditClick} />
                 )}
-                {isEditable ? (
-                    <textarea
-                        value={blurb}
-                        onChange={this.handleChange}
-                    ></textarea>
-                ) : (
-                    <p>{blurb}</p>
-                )}
+                <Field
+                    isEditable={isEditable}
+                    value={blurb}
+                    handleChange={this.handleChange}
+                    isMultiline={true}
+                />
                 <hr />
             </section>
         );

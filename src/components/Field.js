@@ -3,8 +3,14 @@ import '../styles/Field.css';
 
 class Field extends Component {
     render() {
-        const { isEditable, value, handleChange, attribute, itemId } =
-            this.props;
+        const {
+            isEditable,
+            value,
+            handleChange,
+            attribute,
+            itemId,
+            isMultiline,
+        } = this.props;
 
         if (isEditable) {
             return (
@@ -13,13 +19,22 @@ class Field extends Component {
                     <span className={attribute} aria-hidden="true">
                         {value}
                     </span>
-                    <input
-                        className={attribute}
-                        type="text"
-                        value={value}
-                        onChange={handleChange}
-                        data-item-id={itemId}
-                    />
+                    {isMultiline ? (
+                        <textarea
+                            className={attribute}
+                            value={value}
+                            onChange={handleChange}
+                            data-item-id={itemId}
+                        />
+                    ) : (
+                        <input
+                            className={attribute}
+                            type="text"
+                            value={value}
+                            onChange={handleChange}
+                            data-item-id={itemId}
+                        />
+                    )}
                 </div>
             );
         } else {

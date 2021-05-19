@@ -96,6 +96,7 @@ class Job extends Component {
                     ItemTag={Bullet}
                     items={item.bullets}
                     itemFactory={bulletFactory}
+                    isMultiline={true}
                 />
             </article>
         );

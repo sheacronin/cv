@@ -5,8 +5,13 @@ import Field from './Field';
 
 class Bullet extends Component {
     render() {
-        const { isEditable, item, handleChange, handleDeleteClick } =
-            this.props;
+        const {
+            isEditable,
+            item,
+            handleChange,
+            handleDeleteClick,
+            isMultiline,
+        } = this.props;
 
         return (
             <li className="bullet">
@@ -17,12 +22,12 @@ class Bullet extends Component {
                     />
                 )}
                 <Field
-                    TagName="span"
                     isEditable={isEditable}
                     value={item.text}
                     handleChange={handleChange}
                     itemId={item.id}
                     attribute={'text'}
+                    isMultiline={isMultiline}
                 />
             </li>
         );
