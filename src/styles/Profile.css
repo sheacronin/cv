@@ -1,0 +1,11 @@
+#profile textarea,
+#profile p {
+    width: 85%;
+    height: 70px;
+}
+
+#profile textarea {
+    color: grey;
+    font: inherit;
+    border: none;
+}
