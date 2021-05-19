@@ -24,3 +24,14 @@
     font-size: 12px;
     display: inline-block;
 }
+
+.link {
+    position: relative;
+}
+
+.link .delete-btn {
+    opacity: 1;
+    top: 15px;
+    left: 45%;
+    margin: 0 auto;
+}

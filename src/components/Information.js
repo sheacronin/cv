@@ -3,6 +3,7 @@ import '../styles/Information.css';
 import Field from './Field';
 import Section from './Section';
 import uniqid from 'uniqid';
+import DeleteButton from './DeleteButton';
 
 function Information() {
     return (
@@ -29,11 +30,14 @@ function genericItemFactory(text, type) {
 }
 
 function InfoItem(props) {
-    const { isEditable, item, handleChange } = props;
+    const { isEditable, item, handleChange, handleDeleteClick } = props;
 
     return (
         <span className={item.type}>
             {item.type !== 'email' && item.type !== 'name' && <Seperator />}
+            {isEditable && item.type === 'link' && (
+                <DeleteButton onClick={handleDeleteClick} fieldId={item.id} />
+            )}
             <Field
                 TagName="span"
                 isEditable={isEditable}
