@@ -48,7 +48,7 @@ section hr {
 
 #print-btn {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
     background-color: white;
     border: none;
     color: #4b226d;
@@ -69,4 +69,12 @@ section hr {
 
 .pdf .edit-submit-btn {
     display: none;
+}
+
+@media screen and (max-width: 700px) {
+    main {
+        width: unset;
+        padding: 20px;
+        margin-top: 0;
+    }
 }

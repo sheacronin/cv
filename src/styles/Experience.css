@@ -58,3 +58,14 @@ ul {
     max-width: 100%;
     min-width: 100%;
 }
+
+@media screen and (max-width: 750px) {
+    .job .bullet .text {
+        min-width: 85%;
+        width: 85%;
+    }
+
+    .job .bullet .input-wrapper {
+        width: 85%;
+    }
+}
