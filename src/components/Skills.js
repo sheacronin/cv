@@ -4,6 +4,7 @@ import uniqid from 'uniqid';
 import Bullet from './Bullet';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
+import useEditable from '../hooks/useEditable';
 
 function itemsReducer(state, action) {
     // Make a copy of items array.
@@ -31,13 +32,7 @@ function itemsReducer(state, action) {
 }
 
 function Skills() {
-    const [isEditable, setIsEditable] = useState(false);
-    function handleEditClick() {
-        setIsEditable(true);
-    }
-    function handleSubmitClick() {
-        setIsEditable(false);
-    }
+    const [isEditable, handleEditClick] = useEditable();
 
     // Push 6 default skill items into array.
     const initSkills = [];
@@ -52,7 +47,7 @@ function Skills() {
         <section id="skills">
             <h2>Skills</h2>
             {isEditable ? (
-                <SubmitButton onClick={handleSubmitClick} />
+                <SubmitButton onClick={handleEditClick} />
             ) : (
                 <EditButton onClick={handleEditClick} />
             )}
@@ -71,7 +66,7 @@ function Skills() {
                                     attr: 'text',
                                 })
                             }
-                            handleDeleteClick={(e) =>
+                            handleDeleteClick={() =>
                                 dispatch({ type: 'delete', id: skill.id })
                             }
                             isMultiline={false}
