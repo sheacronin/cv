@@ -80,15 +80,12 @@ function Job(props) {
 
     return (
         <article className="job">
-            {isEditable && (
-                <DeleteButton onClick={handleDeleteClick} fieldId={item.id} />
-            )}
+            {isEditable && <DeleteButton onClick={handleDeleteClick} />}
             <h3>
                 <Field
                     isEditable={isEditable}
                     value={item.employer}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'employer'}
                 />
                 {', '}
@@ -96,7 +93,6 @@ function Job(props) {
                     isEditable={isEditable}
                     value={item.location}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'location'}
                 />
             </h3>
@@ -105,7 +101,6 @@ function Job(props) {
                     isEditable={isEditable}
                     value={item.title}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'title'}
                 />
             </h4>
@@ -114,7 +109,6 @@ function Job(props) {
                     isEditable={isEditable}
                     value={item.startDate}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'startDate'}
                 />
                 -
@@ -122,7 +116,6 @@ function Job(props) {
                     isEditable={isEditable}
                     value={item.endDate}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'endDate'}
                 />
             </div>

@@ -69,15 +69,12 @@ function School(props) {
 
     return (
         <article className="school">
-            {isEditable && (
-                <DeleteButton onClick={handleDeleteClick} fieldId={item.id} />
-            )}
+            {isEditable && <DeleteButton onClick={handleDeleteClick} />}
             <h3>
                 <Field
                     isEditable={isEditable}
                     value={item.institution}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'institution'}
                 />
                 {', '}
@@ -85,7 +82,6 @@ function School(props) {
                     isEditable={isEditable}
                     value={item.location}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'location'}
                 />
             </h3>
@@ -93,7 +89,6 @@ function School(props) {
                 isEditable={isEditable}
                 value={item.degree}
                 handleChange={handleChange}
-                itemId={item.id}
                 attribute={'degree'}
             />
             <div className="dates">
@@ -101,7 +96,6 @@ function School(props) {
                     isEditable={isEditable}
                     value={item.gradDate}
                     handleChange={handleChange}
-                    itemId={item.id}
                     attribute={'gradDate'}
                 />
             </div>

@@ -3,9 +3,9 @@ import '../styles/DeleteButton.css';
 import deleteIcon from '../i/delete-icon.svg';
 
 const DeleteButton = (props) => {
-    const { onClick, fieldId } = props;
+    const { onClick } = props;
     return (
-        <button onClick={onClick} className="delete-btn" data-field={fieldId}>
+        <button onClick={onClick} className="delete-btn">
             <img src={deleteIcon} alt="Delete icon" />
         </button>
     );
