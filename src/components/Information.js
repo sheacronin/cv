@@ -1,29 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/Information.css';
 import Field from './Field';
 import SubmitButton from './SubmitButton';
 import EditButton from './EditButton';
-
-// Custom hook for single field.
-function useField(initValue) {
-    const [field, setField] = useState(initValue);
-
-    function handleFieldChange(e) {
-        setField(e.target.value);
-    }
-    return { value: field, handleChange: handleFieldChange };
-}
-
-// Custom hook for edit button.
-function useEditable() {
-    const [isEditable, setIsEditable] = useState(false);
-
-    function handleClick() {
-        setIsEditable((prevState) => !prevState);
-    }
-
-    return [isEditable, handleClick];
-}
+import useEditable from '../hooks/useEditable';
+import useField from '../hooks/useField';
 
 function Information() {
     const [isEditable, handleEditClick] = useEditable();
