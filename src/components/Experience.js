@@ -1,23 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/Experience.css';
 import DeleteButton from './DeleteButton';
 import Field from './Field';
 import uniqid from 'uniqid';
-import Section, { ItemsList } from './Section';
 import Bullet from './Bullet';
-
-class Experience extends Component {
-    render() {
-        return (
-            <Section
-                sectionTitle="Experience"
-                items={[jobFactory()]}
-                ItemTag={Job}
-                itemFactory={jobFactory}
-            />
-        );
-    }
-}
+import EditButton from './EditButton';
+import SubmitButton from './SubmitButton';
+import useEditable from '../hooks/useEditable';
+import useItemsList from '../hooks/useItemsList';
 
 const jobFactory = () => {
     return {
@@ -26,81 +16,54 @@ const jobFactory = () => {
         location: 'City, State',
         startDate: 'Start Date',
         endDate: 'Present',
-        bullets: [
-            { text: 'Bullet 1', id: uniqid() },
-            { text: 'Bullet 2', id: uniqid() },
-            { text: 'Bullet 3', id: uniqid() },
-        ],
         id: uniqid(),
     };
 };
 
-class Job extends Component {
-    render() {
-        const { item, isEditable, handleChange, handleDeleteClick } =
-            this.props;
+function Experience() {
+    const [isEditable, handleEditClick] = useEditable();
 
-        return (
-            <article className="job">
-                {isEditable && (
-                    <DeleteButton
-                        onClick={handleDeleteClick}
-                        fieldId={item.id}
-                    />
-                )}
-                <h3>
-                    <Field
-                        isEditable={isEditable}
-                        value={item.employer}
-                        handleChange={handleChange}
-                        itemId={item.id}
-                        attribute={'employer'}
-                    />
-                    {', '}
-                    <Field
-                        isEditable={isEditable}
-                        value={item.location}
-                        handleChange={handleChange}
-                        itemId={item.id}
-                        attribute={'location'}
-                    />
-                </h3>
-                <h4>
-                    <Field
-                        isEditable={isEditable}
-                        value={item.title}
-                        handleChange={handleChange}
-                        itemId={item.id}
-                        attribute={'title'}
-                    />
-                </h4>
-                <div className="dates">
-                    <Field
-                        isEditable={isEditable}
-                        value={item.startDate}
-                        handleChange={handleChange}
-                        itemId={item.id}
-                        attribute={'startDate'}
-                    />
-                    -
-                    <Field
-                        isEditable={isEditable}
-                        value={item.endDate}
-                        handleChange={handleChange}
-                        itemId={item.id}
-                        attribute={'endDate'}
-                    />
-                </div>
-                <ItemsList
+    const [jobs, dispatch] = useItemsList(jobFactory, 2);
+
+    return (
+        <section id="experience">
+            <h2>Experience</h2>
+            {isEditable ? (
+                <SubmitButton onClick={handleEditClick} />
+            ) : (
+                <EditButton onClick={handleEditClick} />
+            )}
+            {jobs.map((job) => (
+                <Job
+                    key={job.id}
                     isEditable={isEditable}
-                    ItemTag={Bullet}
-                    items={item.bullets}
-                    itemFactory={bulletFactory}
-                    isMultiline={true}
+                    item={job}
+                    handleChange={(e) =>
+                        dispatch({
+                            type: 'edit',
+                            id: job.id,
+                            value: e.target.value,
+                            // Use class name because attr
+                            // is listed there.
+                            attr: e.target.className,
+                        })
+                    }
+                    handleDeleteClick={() =>
+                        dispatch({ type: 'delete', id: job.id })
+                    }
                 />
-            </article>
-        );
-    }
+            ))}
+            {isEditable && (
+                <button
+                    className="new-item-btn"
+                    onClick={() => dispatch({ type: 'add' })}
+                >
+                    +
+                </button>
+            )}
+            <hr />
+        </section>
+    );
 }
 
 const bulletFactory = () => {
@@ -109,5 +72,91 @@ const bulletFactory = () => {
         id: uniqid(),
     };
 };
+
+function Job(props) {
+    const { item, isEditable, handleChange, handleDeleteClick } = props;
+
+    const [bullets, dispatch] = useItemsList(bulletFactory, 3);
+
+    return (
+        <article className="job">
+            {isEditable && (
+                <DeleteButton onClick={handleDeleteClick} fieldId={item.id} />
+            )}
+            <h3>
+                <Field
+                    isEditable={isEditable}
+                    value={item.employer}
+                    handleChange={handleChange}
+                    itemId={item.id}
+                    attribute={'employer'}
+                />
+                {', '}
+                <Field
+                    isEditable={isEditable}
+                    value={item.location}
+                    handleChange={handleChange}
+                    itemId={item.id}
+                    attribute={'location'}
+                />
+            </h3>
+            <h4>
+                <Field
+                    isEditable={isEditable}
+                    value={item.title}
+                    handleChange={handleChange}
+                    itemId={item.id}
+                    attribute={'title'}
+                />
+            </h4>
+            <div className="dates">
+                <Field
+                    isEditable={isEditable}
+                    value={item.startDate}
+                    handleChange={handleChange}
+                    itemId={item.id}
+                    attribute={'startDate'}
+                />
+                -
+                <Field
+                    isEditable={isEditable}
+                    value={item.endDate}
+                    handleChange={handleChange}
+                    itemId={item.id}
+                    attribute={'endDate'}
+                />
+            </div>
+            <ul>
+                {bullets.map((bullet) => (
+                    <Bullet
+                        key={bullet.id}
+                        isEditable={isEditable}
+                        item={bullet}
+                        handleChange={(e) =>
+                            dispatch({
+                                type: 'edit',
+                                id: bullet.id,
+                                value: e.target.value,
+                                attr: 'text',
+                            })
+                        }
+                        handleDeleteClick={() =>
+                            dispatch({ type: 'delete', id: bullet.id })
+                        }
+                        isMultiline={true}
+                    />
+                ))}
+            </ul>
+            {isEditable && (
+                <button
+                    className="new-item-btn"
+                    onClick={() => dispatch({ type: 'add' })}
+                >
+                    +
+                </button>
+            )}
+        </article>
+    );
+}
 
 export default Experience;

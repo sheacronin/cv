@@ -1,47 +1,23 @@
-import React, { useState, useReducer } from 'react';
+import React from 'react';
 import '../styles/Skills.css';
 import uniqid from 'uniqid';
 import Bullet from './Bullet';
 import EditButton from './EditButton';
 import SubmitButton from './SubmitButton';
 import useEditable from '../hooks/useEditable';
+import useItemsList from '../hooks/useItemsList';
 
-function itemsReducer(state, action) {
-    // Make a copy of items array.
-    const newItems = [...state];
-
-    switch (action.type) {
-        case 'edit':
-            // Find the item to change.
-            const changingItem = newItems.find((item) => item.id === action.id);
-            // Update the item's changing attribute with the new value.
-            changingItem[action.attr] = action.value;
-            return newItems;
-        case 'add':
-            return [...state, { text: 'Skill', id: uniqid() }];
-        case 'delete':
-            const deleteIndex = newItems.findIndex(
-                (item) => item.id === action.id
-            );
-            // Mutate array copy by deleting selected skill.
-            newItems.splice(deleteIndex, 1);
-            return newItems;
-        default:
-            return state;
-    }
-}
+const skillFactory = () => {
+    return {
+        text: 'Skill',
+        id: uniqid(),
+    };
+};
 
 function Skills() {
     const [isEditable, handleEditClick] = useEditable();
 
-    // Push 6 default skill items into array.
-    const initSkills = [];
-    let n = 1;
-    while (n <= 6) {
-        initSkills.push({ text: 'Skill', id: uniqid() });
-        n++;
-    }
-    const [skills, dispatch] = useReducer(itemsReducer, initSkills);
+    const [skills, dispatch] = useItemsList(skillFactory, 6);
 
     return (
         <section id="skills">
