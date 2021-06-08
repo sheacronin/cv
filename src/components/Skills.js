@@ -27,37 +27,35 @@ function Skills() {
             ) : (
                 <EditButton onClick={handleEditClick} />
             )}
-            <div>
-                <ul>
-                    {skills.map((skill) => (
-                        <Bullet
-                            key={skill.id}
-                            isEditable={isEditable}
-                            item={skill}
-                            handleChange={(e) =>
-                                dispatch({
-                                    type: 'edit',
-                                    id: skill.id,
-                                    value: e.target.value,
-                                    attr: 'text',
-                                })
-                            }
-                            handleDeleteClick={() =>
-                                dispatch({ type: 'delete', id: skill.id })
-                            }
-                            isMultiline={false}
-                        />
-                    ))}
-                </ul>
-                {isEditable && (
-                    <button
-                        className="new-item-btn"
-                        onClick={() => dispatch({ type: 'add' })}
-                    >
-                        +
-                    </button>
-                )}
-            </div>
+            <ul>
+                {skills.map((skill) => (
+                    <Bullet
+                        key={skill.id}
+                        isEditable={isEditable}
+                        item={skill}
+                        handleChange={(e) =>
+                            dispatch({
+                                type: 'edit',
+                                id: skill.id,
+                                value: e.target.value,
+                                attr: 'text',
+                            })
+                        }
+                        handleDeleteClick={() =>
+                            dispatch({ type: 'delete', id: skill.id })
+                        }
+                        isMultiline={false}
+                    />
+                ))}
+            </ul>
+            {isEditable && (
+                <button
+                    className="new-item-btn"
+                    onClick={() => dispatch({ type: 'add' })}
+                >
+                    +
+                </button>
+            )}
             <hr />
         </section>
     );
