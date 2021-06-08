@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useRef } from 'react';
+import React, { Component, useRef, useState } from 'react';
 import Information from './components/Information';
 import Profile from './components/Profile';
 import Experience from './components/Experience';
@@ -9,15 +9,8 @@ import Activities from './components/Activities';
 import ReactToPrint from 'react-to-print';
 
 class CV extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isPrintMode: false,
-        };
-    }
-
     render() {
-        const { isPrintMode } = this.state;
+        const { isPrintMode } = this.props;
         return (
             <main className={isPrintMode ? 'pdf' : undefined}>
                 <Information />
@@ -33,25 +26,22 @@ class CV extends Component {
 
 function App() {
     const componentRef = useRef();
+    const [isPrintMode, setIsPrintMode] = useState(false);
 
     return (
         <div>
-            <CV ref={componentRef} />
+            <CV ref={componentRef} isPrintMode={isPrintMode} />
             <ReactToPrint
                 trigger={() => <button id="print-btn">Print!</button>}
                 content={() => componentRef.current}
                 pageStyle="@page {margin: -1.5cm}"
                 onBeforeGetContent={() => {
                     return new Promise((resolve) => {
-                        componentRef.current.setState(
-                            { isPrintMode: true },
-                            () => resolve()
-                        );
+                        setIsPrintMode(true);
+                        resolve();
                     });
                 }}
-                onAfterPrint={() =>
-                    componentRef.current.setState({ isPrintMode: false })
-                }
+                onAfterPrint={() => setIsPrintMode(false)}
             />
         </div>
     );
