@@ -9,3 +9,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 -   Handling state in React.
 -   Structuring an app using React components.
 -   Styling dynamically sized input elements.
+-   Refactoring class components into functional components using Hooks.
+-   Managing state with Hooks.
+-   Creating custom Hooks to reuse stateful logic between components.
